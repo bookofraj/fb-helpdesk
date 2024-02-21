@@ -1,0 +1,46 @@
+.register{
+    width: 100vw;
+    height: 100vh;
+
+    background: rgb(57, 57, 232);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container1{
+    width: 300px;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: white;
+
+    border-radius: 10px;
+    padding: 20px 0;
+}
+
+.container1 form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding: 2px;
+    gap: 2px;
+
+    font-weight: bolder;
+}
+
+#submit{
+    width: -webkit-fill-available;
+    padding: 10px 30px;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+}
