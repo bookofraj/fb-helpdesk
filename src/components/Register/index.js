@@ -1,7 +1,12 @@
-import React from 'react'
 import '../styles/styles.css'
 
+import React, { useContext } from 'react'
+import StateContext from '../../contexts/states/StatesContext';
+
 function Register() {
+
+  const store = useContext(StateContext);
+  
   return (
     <div className="wrapper">
       <div className="container">
@@ -19,7 +24,7 @@ function Register() {
           </div>
           <input id='submit' type="submit" />
         </form>
-        <p>Already have an account? Login</p>
+        <p>Already have an account? <button onClick={store.handleShowLogin()}>Login</button></p>
       </div>
     </div>
   )

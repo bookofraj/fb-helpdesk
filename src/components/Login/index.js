@@ -17,7 +17,7 @@ function Login() {
                     </div>
                     <input id='submit' type="submit" value="Login"/>
                 </form>
-                <p>New to MyApp? Sign Up</p>
+                <p>New to MyApp? <button to='/'>Sign Up</button></p>
             </div>
         </div>
     )
