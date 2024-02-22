@@ -6,26 +6,47 @@ import ConnectPages from './components/ConnectPages';
 import DisconnectPages from './components/DisconnectPages';
 import AgentScreen from './components/AgentScreen';
 
-import { useContext, useEffect } from 'react';
+// eslint-disable-next-line
+import { useContext, useEffect, useState } from 'react';
 import StateContext from './contexts/states/StatesContext';
 
 
 function App() {
+  // eslint-disable-next-line
   const store = useContext(StateContext);
   
-  useEffect(()=>{
-    store.handleShowRegister();
-    // eslint-disable-next-line
-  },[])
-  // const view = store.show;
+  const [fbEmail, setFbEmail] = useState(null)
+  const [fbPass, setFbPass] = useState(null)
+  const handleFbDetail = (email, password) => {
+    setFbEmail(email)
+    setFbPass(password)
+    setView('login')
+    // console.log("FbEmail: ",fbEmail)
+    // console.log("FbPass: ",fbPass)
+  }
+
+  const [token, setToken] = useState(null);
+  const handleToken = (x) => {
+    setToken(x);
+    console.log("At App & Access Token: ",token);
+    setView('connect_pages');
+  }
+
+  
+  const [view, setView] = useState('register');
+  const updateView = (newView) => {
+    setView(newView);
+  };
+  
+
 
   return (
     <div className="App">
-      {store.show === 'register' ? <Register /> : null}
-      {store.show === 'login' ? <Login /> : null}
-      {store.show === 'connect_pages' ? <ConnectPages /> : null}
-      {store.show === 'disconnect_pages' ? <DisconnectPages /> : null}
-      {store.show === 'agent_screen' ? <AgentScreen /> : null}
+      {view === 'register' ? <Register updateAppView={updateView} sendFbDetail2App={handleFbDetail}/> : null}
+      {view === 'login' ? <Login updateAppView={updateView} fbEmail={fbEmail} fbPass={fbPass} sendToken2App={handleToken}/> : null}
+      {view === 'connect_pages' ? <ConnectPages updateAppView={updateView}/> : null}
+      {view === 'disconnect_pages' ? <DisconnectPages updateAppView={updateView}/> : null}
+      {view === 'agent_screen' ? <AgentScreen updateAppView={updateView}/> : null}
     </div>
   );
 }

@@ -5,12 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import Store from './contexts/states/Store';
+import { FirebaseProvider } from './contexts/firebase'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Store>
-      <App />
+      <FirebaseProvider>
+        <App />
+      </FirebaseProvider>
     </Store>
   </React.StrictMode>
 );
